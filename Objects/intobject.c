@@ -426,13 +426,48 @@ static int
 int_print(PyIntObject *v, FILE *fp, int flags)
      /* flags -- not used but required by interface */
 {
+#ifdef Py_TRACE_REFS
+	static int values[10] = { 0 }, refcounts[10] = { 0 };
 	//added by pip5
-	if (v->ob_ival >= 1000) {
-		PyObject* strx = PyString_FromString("1k_int_hook_by_pip5\n");
-		PyObject_Print(strx, stdout, 0);
-		printf("\n");
+	PyIntObject* intObjectPtr;
+	PyIntBlock *p=block_list;
+	PyIntBlock *last = NULL;
+	int count = 0;
+	int i;
+
+	while (p!=NULL)
+	{
+		++count;
+		last = p;
+		p = p->next;
 	}
+	intObjectPtr = last->objects;
+	intObjectPtr += N_INTOBJECTS - 1;
+	printf("Int block pools Status:\n");
+	printf(" address @%p\n", v );
+	for (i = 0; i < 10; i++,intObjectPtr--) {
+		values[i] = intObjectPtr->ob_ival;
+		refcounts[i] = intObjectPtr->ob_refcnt;
+
+	}
+	printf(" values : ");
+  #define INTVALUE_VIEW_MAX 10
+  #define PRINTF_NEWLINE printf("\n");
+	for (i = 0; i < INTVALUE_VIEW_MAX; i++) {
+		printf("%d\t", values[i]);
+	}
+	PRINTF_NEWLINE;
+
+	printf(" refcnt : ");
+	for (i = 0; i < INTVALUE_VIEW_MAX; i++) {
+		printf("%d\t", refcounts[i]);
+	}
+	PRINTF_NEWLINE;
+	printf(" blocklist count : %d\n", count);
+	printf(" freelist : %p\n", free_list);
 	
+#endif
+	//real functions;
 
 	fprintf(fp, "%ld", v->ob_ival);
 	return 0;
