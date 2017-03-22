@@ -337,3 +337,15 @@ __pycache__/
 
 Win32Release/
 Win32Debug/
+Win32PGO/
+
+*.exe
+*.dll
+*.?obj
+*.obj
+*.pdb
+*.?pdb 
+*.exp
+*.lib 
+
+

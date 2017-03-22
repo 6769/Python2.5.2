@@ -426,6 +426,14 @@ static int
 int_print(PyIntObject *v, FILE *fp, int flags)
      /* flags -- not used but required by interface */
 {
+	//added by pip5
+	if (v->ob_ival >= 1000) {
+		PyObject* strx = PyString_FromString("1k_int_hook_by_pip5\n");
+		PyObject_Print(strx, stdout, 0);
+		printf("\n");
+	}
+	
+
 	fprintf(fp, "%ld", v->ob_ival);
 	return 0;
 }
