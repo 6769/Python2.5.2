@@ -37,6 +37,7 @@ typedef struct {
     long ob_shash;
     int ob_sstate;
     char ob_sval[1];
+	//char *ob_sval;
 
     /* Invariants:
      *     ob_sval contains space for 'ob_size+1' elements.

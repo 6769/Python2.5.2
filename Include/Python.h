@@ -170,4 +170,6 @@ PyAPI_FUNC(PyObject*) _Py_Mangle(PyObject *p, PyObject *name);
 #define PyDoc_STR(str) ""
 #endif
 
+#define PRINT_NEWLINE printf("\n");
+
 #endif /* !Py_PYTHON_H */

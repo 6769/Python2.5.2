@@ -938,6 +938,23 @@ string_str(PyObject *s)
 static Py_ssize_t
 string_length(PyStringObject *a)
 {
+#ifdef Py_TRACE_REFS
+
+	if (a->ob_size == 1) {
+		char chaA = 'a';
+		PyStringObject** posA = characters + (unsigned short)chaA;
+		PRINT_NEWLINE; printf("[+]char X:");
+		for (int i = 0; i < 7; i++) {
+			PyStringObject* strobj = posA[i];
+			printf("%c\t", strobj->ob_sval[0]);
+		}
+		PRINT_NEWLINE; printf("[+]refcnt:");
+		for (int i = 0; i < 7; i++) {
+			PyStringObject* strobj = posA[i];
+			printf("%d\t", strobj->ob_refcnt);
+		}
+	}PRINT_NEWLINE;
+#endif // Py_TRACE_REFS
 	return a->ob_size;
 }
 
@@ -946,6 +963,14 @@ string_concat(register PyStringObject *a, register PyObject *bb)
 {
 	register Py_ssize_t size;
 	register PyStringObject *op;
+
+#ifdef Py_TRACE_REFS
+	printf("[+]call string_concat(self:0x%p,anotherstr:0x%p)\n",a,bb);
+	PyObject_Print(a  , stdout, 0); PRINT_NEWLINE;
+	PyObject_Print(bb , stdout, 0); PRINT_NEWLINE;
+
+#endif
+
 	if (!PyString_Check(bb)) {
 #ifdef Py_USING_UNICODE
 		if (PyUnicode_Check(bb))
@@ -1744,6 +1769,13 @@ string_join(PyStringObject *self, PyObject *orig)
 	size_t sz = 0;
 	Py_ssize_t i;
 	PyObject *seq, *item;
+
+#ifdef Py_TRACE_REFS
+	printf("[+]call string_join(self:0x%p,seq:0x%p)\n",self,orig);
+	PyObject_Print(self, stdout, 0); PRINT_NEWLINE;
+	PyObject_Print(orig, stdout, 0); PRINT_NEWLINE;
+
+#endif
 
 	seq = PySequence_Fast(orig, "");
 	if (seq == NULL) {
