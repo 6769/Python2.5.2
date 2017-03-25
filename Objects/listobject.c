@@ -288,6 +288,8 @@ list_print(PyListObject *op, FILE *fp, int flags)
 	int rc;
 	Py_ssize_t i;
 
+
+
 	rc = Py_ReprEnter((PyObject*)op);
 	if (rc != 0) {
 		if (rc < 0)
@@ -306,6 +308,11 @@ list_print(PyListObject *op, FILE *fp, int flags)
 	}
 	fprintf(fp, "]");
 	Py_ReprLeave((PyObject *)op);
+
+#ifdef _DEBUG
+	printf("\nallocated= %d , ob_size= %d \n", op->allocated, op->ob_size);
+	printf("num_free_lists= %d \n",num_free_lists);
+#endif
 	return 0;
 }
 
