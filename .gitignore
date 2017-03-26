@@ -67,6 +67,7 @@ Temporary Items
 x64/
 x86/
 bld/
+[Bb]uild/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
@@ -343,6 +344,7 @@ Win32PGO/
 *.dll
 *.?obj
 *.obj
+*.o
 *.pdb
 *.?pdb 
 *.exp
