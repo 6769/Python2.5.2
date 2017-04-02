@@ -5,7 +5,7 @@ using namespace std;
 #include "intObject.h"
 #include "engine.h"
 
-int main()
+int main(int argc,char** argv)
 {
 	ExcuteEngine engine;
 	engine.Excute();

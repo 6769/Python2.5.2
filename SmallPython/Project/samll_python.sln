@@ -1,21 +1,27 @@
-Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "samll_python", "samll_python.vcproj", "{CE93E66B-1A83-4AEB-850A-7E07AF661E62}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "samll_python", "samll_python.vcxproj", "{CE93E66B-1A83-4AEB-850A-7E07AF661E62}"
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
-		Release = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug.ActiveCfg = Debug|Win32
-		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug.Build.0 = Debug|Win32
-		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release.ActiveCfg = Release|Win32
-		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release.Build.0 = Release|Win32
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug|x64.ActiveCfg = Debug|x64
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug|x64.Build.0 = Debug|x64
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug|x86.ActiveCfg = Debug|Win32
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Debug|x86.Build.0 = Debug|Win32
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release|x64.ActiveCfg = Release|x64
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release|x64.Build.0 = Release|x64
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release|x86.ActiveCfg = Release|Win32
+		{CE93E66B-1A83-4AEB-850A-7E07AF661E62}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

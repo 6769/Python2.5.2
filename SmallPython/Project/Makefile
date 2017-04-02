@@ -44,7 +44,7 @@ vpath %.cpp $(TEST_PATH)
 #####################################################
 # normal compile
 #####################################################
-all : init $(TARGET)
+all : clean init $(TARGET)
 
 $(TARGET) : $(OBJS)
 	@echo "generate excutable file : $@"
