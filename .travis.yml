@@ -3,5 +3,6 @@ compiler: gcc
 
 before_script: 
 - chmod +x configure
+- chmod +x ./Parser/asdl_c.py
 
 script: ./configure --disable-ipv6 && make && make test
