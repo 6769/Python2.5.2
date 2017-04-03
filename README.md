@@ -1,6 +1,6 @@
 This is Python version 2.5.2
 ============================
-
+[![Build Status](https://travis-ci.org/6769/Python2.5.2.svg?branch=master)](https://travis-ci.org/6769/Python2.5.2)
 Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Python Software 
 Foundation. 
 All rights reserved.

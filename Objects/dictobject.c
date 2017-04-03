@@ -390,6 +390,33 @@ lookdict_string(dictobject *mp, PyObject *key, register long hash)
 	return 0;
 }
 
+static void ShowDictObject(dictobject* dictObject) {
+	dictentry* entry = dictObject->ma_table;
+	int count = dictObject->ma_mask + 1;
+	
+	printf("[+] key:");
+	for (int i = 0; i < count; i++) {
+		PyObject* key = entry->me_key;
+		PyObject* value = entry->me_value;
+		if (key == NULL) {
+			printf("NULL");
+		}
+		else {
+			if (PyString_Check(key)) {
+				if (PyString_AsString(key)[0] == '<') {
+					printf("dummy");
+				}
+				else {
+					(key->ob_type)->tp_print(key, stdout, 0);
+				}
+			}
+			else {
+
+			}
+		}
+	}
+}
+
 /*
 Internal routine to insert a new item into the table.
 Used both by the internal resize routine and by the public insert routine.
@@ -402,6 +429,21 @@ insertdict(register dictobject *mp, PyObject *key, long hash, PyObject *value)
 	PyObject *old_value;
 	register dictentry *ep;
 	typedef PyDictEntry *(*lookupfunc)(PyDictObject *, PyObject *, long);
+
+	{//hack py Dict Object;
+	//2017-04-02 23:38:10
+		dictentry *p;
+		long strHash;
+		PyObject* str = PyString_FromString("PR");
+		strHash = PyObject_Hash(str);
+		p = mp->ma_lookup(mp, str, strHash);
+		if (p->me_value != NULL && (key->ob_type)->tp_name[0] == 'i') {
+			PyIntObject* intObject = (PyIntObject*)key;
+			printf("[+]insert IntObj {%d}\n", intObject->ob_ival);
+			ShowDictObject(mp);
+		}
+
+	}
 
 	assert(mp->ma_lookup != NULL);
 	ep = mp->ma_lookup(mp, key, hash);
@@ -428,6 +470,9 @@ insertdict(register dictobject *mp, PyObject *key, long hash, PyObject *value)
 		ep->me_value = value;
 		mp->ma_used++;
 	}
+
+
+
 	return 0;
 }
 
