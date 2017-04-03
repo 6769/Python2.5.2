@@ -1,0 +1,3 @@
+language: c
+compiler: gcc
+script: ./configure --disable-ipv6 && make && make test

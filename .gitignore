@@ -350,4 +350,7 @@ Win32PGO/
 *.exp
 *.lib 
 
+Makefile
+config.status
+
 
